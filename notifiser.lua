@@ -36,7 +36,7 @@ local newmsg = game:GetService("HttpService"):JSONEncode({
     ["avatar_url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..plr.Name
 })
 syn.request({
-    Url = getgenv().webhookwebhook,
+    Url = _G.webhookwebhook,
     Method = "POST",
     Headers = {["Content-Type"] = "application/json"},
     Body = newmsg,
@@ -48,7 +48,7 @@ wait(0.05)
 for Index, Fruit in pairs(Workspace:GetChildren()) do
     if string.find(Fruit.Name, "Fruit") then
         local foundfirst = game:GetService("HttpService"):JSONEncode({
-            ["content"] = "<@"..getgenv().id..">",
+            ["content"] = "<@".._G.id..">",
             ["embeds"] = {
                 {
                   ["title"] = "Fruit Found!",
@@ -84,7 +84,7 @@ for Index, Fruit in pairs(Workspace:GetChildren()) do
               ["avatar_url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..plr.Name
         })
         syn.request({
-            Url = getgenv().webhookwebhook,
+            Url = _G.webhookwebhook,
             Method = "POST",
             Headers = {["Content-Type"] = "application/json"},
             Body = foundfirst,
@@ -95,7 +95,7 @@ end
 Workspace.ChildAdded:Connect(function(Fruit)
 if string.find(Fruit.Name, "Fruit") then
         local foundsecond = game:GetService("HttpService"):JSONEncode({
-            ["content"] = "<@"..getgenv().id..">",
+            ["content"] = "<@".._G.id..">",
             ["embeds"] = {
                 {
                   ["title"] = "New Fruit Spawned!",
@@ -131,7 +131,7 @@ if string.find(Fruit.Name, "Fruit") then
               }
         })
         syn.request({
-            Url = getgenv().webhook,
+            Url = _G.webhook,
             Method = "POST",
             Headers = {["Content-Type"] = "application/json"},
             Body = foundsecond,
@@ -142,7 +142,7 @@ end)
 Workspace.ChildRemoved:Connect(function(Fruit)
     if string.find(Fruit.Name, "Fruit") then
         local lostfruit = game:GetService("HttpService"):JSONEncode({
-            ["content"] = "<@"..getgenv().id..">",
+            ["content"] = "<@".._G.id..">",
             ["embeds"] = {
                 {
                   ["title"] = "Someone Found a Fruit",
@@ -173,7 +173,7 @@ Workspace.ChildRemoved:Connect(function(Fruit)
               }
         })
         syn.request({
-            Url = getgenv().webhook,
+            Url = _G.webhook,
             Method = "POST",
             Headers = {["Content-Type"] = "application/json"},
             Body = lostfruit,
@@ -188,7 +188,7 @@ local newms2g = game:GetService("HttpService"):JSONEncode({
     ["avatar_url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..plr.Name
 })
 syn.request({
-    Url = getgenv().webhook,
+    Url = _G.webhook,
     Method = "POST",
     Headers = {["Content-Type"] = "application/json"},
     Body = newms2g,
