@@ -38,7 +38,7 @@ local newmsg = game:GetService("HttpService"):JSONEncode({
     ["avatar_url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..plr.Name
 })
 syn.request({
-    Url = _G.webhookwebhook,
+    Url = _G.webhook,
     Method = "POST",
     Headers = {["Content-Type"] = "application/json"},
     Body = newmsg,
