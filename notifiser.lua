@@ -1,3 +1,5 @@
+print(_G.webhook)
+print(_G.id)
 local http = game:GetService("HttpService")
 local Workspace = game:GetService("Workspace")
 local PlayerService = game:GetService("Players")
