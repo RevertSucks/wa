@@ -1,12 +1,9 @@
-local webhook = "https://discord.com/api/webhooks/924775721719721984/bEFooz9prOw-YiXkxJKxa1LLo5WWpeLi7BJjmywloydWvSkCd1zDIilgVY9SbYjokoM5"
-local id = ""
-
-
 local http = game:GetService("HttpService")
 local Workspace = game:GetService("Workspace")
 local PlayerService = game:GetService("Players")
 local plr = PlayerService.LocalPlayer
 local gameid = game.JobId
+local date = game:GetService("HttpService"):JSONEncode(os.date("*t"))
 local ScreenGui = Instance.new("ScreenGui")
 local TextLabel = Instance.new("TextLabel")
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -39,7 +36,7 @@ local newmsg = game:GetService("HttpService"):JSONEncode({
     ["avatar_url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..plr.Name
 })
 syn.request({
-    Url = webhook,
+    Url = getgenv().webhookwebhook,
     Method = "POST",
     Headers = {["Content-Type"] = "application/json"},
     Body = newmsg,
@@ -51,7 +48,7 @@ wait(0.05)
 for Index, Fruit in pairs(Workspace:GetChildren()) do
     if string.find(Fruit.Name, "Fruit") then
         local foundfirst = game:GetService("HttpService"):JSONEncode({
-            ["content"] = "<@"..id..">",
+            ["content"] = "<@"..getgenv().id..">",
             ["embeds"] = {
                 {
                   ["title"] = "Fruit Found!",
@@ -71,6 +68,11 @@ for Index, Fruit in pairs(Workspace:GetChildren()) do
                       ["value"] = gameid,
                       ["inline"] = false
                   },
+                  {
+                    ["name"] = "Time",
+                    ["value"] = date,
+                    ["inline"] = false
+                },
                   },
                   ["footer"] = {
                     ["text"] = "Exxen",
@@ -82,7 +84,7 @@ for Index, Fruit in pairs(Workspace:GetChildren()) do
               ["avatar_url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..plr.Name
         })
         syn.request({
-            Url = webhook,
+            Url = getgenv().webhookwebhook,
             Method = "POST",
             Headers = {["Content-Type"] = "application/json"},
             Body = foundfirst,
@@ -93,7 +95,7 @@ end
 Workspace.ChildAdded:Connect(function(Fruit)
 if string.find(Fruit.Name, "Fruit") then
         local foundsecond = game:GetService("HttpService"):JSONEncode({
-            ["content"] = "<@"..id..">",
+            ["content"] = "<@"..getgenv().id..">",
             ["embeds"] = {
                 {
                   ["title"] = "New Fruit Spawned!",
@@ -104,7 +106,7 @@ if string.find(Fruit.Name, "Fruit") then
                       ["inline"] = false
                     },
                     {
-                        ["name"] = " ",
+                        ["name"] = "Position",
                         ["value"] = tostring(Fruit.Handle.Position),
                         ["inline"] = false
                     },
@@ -113,6 +115,11 @@ if string.find(Fruit.Name, "Fruit") then
                       ["value"] = gameid,
                       ["inline"] = false
                   },
+                  {
+                    ["name"] = "Time",
+                    ["value"] = date,
+                    ["inline"] = false
+                },
                   },
                   ["footer"] = {
                     ["text"] = "Exxen",
@@ -124,7 +131,7 @@ if string.find(Fruit.Name, "Fruit") then
               }
         })
         syn.request({
-            Url = webhook,
+            Url = getgenv().webhook,
             Method = "POST",
             Headers = {["Content-Type"] = "application/json"},
             Body = foundsecond,
@@ -135,7 +142,7 @@ end)
 Workspace.ChildRemoved:Connect(function(Fruit)
     if string.find(Fruit.Name, "Fruit") then
         local lostfruit = game:GetService("HttpService"):JSONEncode({
-            ["content"] = "<@"..id..">",
+            ["content"] = "<@"..getgenv().id..">",
             ["embeds"] = {
                 {
                   ["title"] = "Someone Found a Fruit",
@@ -150,6 +157,11 @@ Workspace.ChildRemoved:Connect(function(Fruit)
                       ["value"] = gameid,
                       ["inline"] = false
                   },
+                  {
+                    ["name"] = "Time",
+                    ["value"] = date,
+                    ["inline"] = false
+                },
                   },
                   ["footer"] = {
                     ["text"] = "Exxen",
@@ -161,7 +173,7 @@ Workspace.ChildRemoved:Connect(function(Fruit)
               }
         })
         syn.request({
-            Url = webhook,
+            Url = getgenv().webhook,
             Method = "POST",
             Headers = {["Content-Type"] = "application/json"},
             Body = lostfruit,
@@ -176,7 +188,7 @@ local newms2g = game:GetService("HttpService"):JSONEncode({
     ["avatar_url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..plr.Name
 })
 syn.request({
-    Url = webhook,
+    Url = getgenv().webhook,
     Method = "POST",
     Headers = {["Content-Type"] = "application/json"},
     Body = newms2g,
