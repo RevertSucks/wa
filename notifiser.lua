@@ -1,5 +1,3 @@
-print(_G.webhook)
-print(_G.id)
 local http = game:GetService("HttpService")
 local Workspace = game:GetService("Workspace")
 local PlayerService = game:GetService("Players")
@@ -38,7 +36,7 @@ local newmsg = game:GetService("HttpService"):JSONEncode({
     ["avatar_url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..plr.Name
 })
 syn.request({
-    Url = _G.webhook,
+    Url = _G.webhookwebhook,
     Method = "POST",
     Headers = {["Content-Type"] = "application/json"},
     Body = newmsg,
@@ -86,7 +84,7 @@ for Index, Fruit in pairs(Workspace:GetChildren()) do
               ["avatar_url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username="..plr.Name
         })
         syn.request({
-            Url = _G.webhookwebhook,
+            Url = _G.webhook,
             Method = "POST",
             Headers = {["Content-Type"] = "application/json"},
             Body = foundfirst,
