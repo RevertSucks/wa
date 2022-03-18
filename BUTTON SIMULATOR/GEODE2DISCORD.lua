@@ -1,3 +1,6 @@
+                                                --//!!\\ NOTICE //!!\\--
+--This captures any message sent(from the server) that includes "geode button". i STRONGLY recommend you to turn off common notifis--
+
 local useridtomention = ""
 local webhook = ""
 local plr = game.Players.LocalPlayer
